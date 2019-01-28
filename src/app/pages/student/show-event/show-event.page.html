@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf='!isSearchbarOpend'>
+      View Event
+    </ion-title>
+    <ion-searchbar *ngIf='isSearchbarOpend' placeholder='Search...' showCancelButton='true' (ionCancel)='isSearchbarOpend=false'
+      (ionInput)="getItems($event)" autocorrect="off"></ion-searchbar>
+    <ion-buttons slot='end'>
+      <ion-button slot='icon-only' *ngIf='!isSearchbarOpend' (click)='isSearchbarOpend=true' size='large'>
+        <ion-icon name='search'></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div>
+    <ion-card *ngFor='let event of events' (click)='goToEvent(event)'>
+      <img src='../../../../assets/img/just.jpg' />
+      <ion-card-header>
+        <ion-card-title>{{event.eventName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{event.startDate}} {{event.startTime}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf='emptyEvents'>
+    <p class='emptyEvent'>No events found.</p>
+  </div>
+</ion-content>

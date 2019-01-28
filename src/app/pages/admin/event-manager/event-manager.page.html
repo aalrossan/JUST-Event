@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf='!isSearchbarOpend'>
+      Event Manager
+    </ion-title>
+    <ion-searchbar *ngIf='isSearchbarOpend;' placeholder='Search...' showCancelButton='true' (ionCancel)='isSearchbarOpend=false;'
+      (ionInput)="getItems($event)" autocorrect="off"></ion-searchbar>
+    <ion-buttons slot='end'>
+      <ion-button slot='icon-only' *ngIf='!isSearchbarOpend' (click)='isSearchbarOpend=true' size='large'>
+        <ion-icon name='search'></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor='let event of events'>
+    <img src='../../../../assets/img/just.jpg' />
+    <ion-card-header>
+      <ion-card-title>{{event.eventName}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{event.startDate}} {{event.startTime}}
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)='analysisBtn(event._id)'>
+          <ion-row>
+            <ion-icon name='analytics'></ion-icon>
+          </ion-row>
+          <ion-row>
+            <ion-col>Analysis</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col (click)='editEventBtn(event._id)'>
+          <ion-row>
+            <ion-icon name='create'></ion-icon>
+          </ion-row>
+          <ion-row>
+            <ion-col>Edit</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col (click)='createEvaluationBtn(event)'>
+          <ion-row>
+            <ion-icon name='document'></ion-icon>
+          </ion-row>
+          <ion-row>
+            <ion-col>Create evaluation</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col (click)='moreBtn(event)'>
+          <ion-row>
+            <ion-icon name='more'></ion-icon>
+          </ion-row>
+          <ion-row>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <div *ngIf='emptyEvents'>
+    <p class='emptyEvent'>you have no events to manage</p>
+    <ion-button shape='round' color='danger' (click)='createEventBtn()'>Create new Event</ion-button>
+  </div>
+</ion-content>

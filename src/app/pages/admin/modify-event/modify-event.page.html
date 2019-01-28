@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Modify Event
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf='loadEvent'>
+  <ion-item-group (ionChange)='modifyEvent($event)'>
+    <ion-item-divider color='light'>
+      <ion-label>Event Name<span style="color:crimson;">*</span></ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-input type='text' placeholder='Event Name' name='eventName' [(ngModel)]='event.eventName'></ion-input>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Event Type<span style="color:crimson;">*</span></ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Event Type</ion-label>
+      <ion-select placeholder='Select Event Type' name='eventType' [(ngModel)]='event.eventType'>
+        <ion-select-option *ngFor='let s of eventType' [value]='s.value'>{{s.value}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Minimum of Number Students<span style="color:crimson;">*</span></ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-input type='number' placeholder='Number of Students' name='minNoStd' [(ngModel)]='event.minNoStd'></ion-input>
+      <ion-buttons slot='end'>
+        <ion-button (click)='getMinNoStd()'>
+          <ion-icon name='save'></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Start Date<span style="color:crimson;">*</span></ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Date</ion-label>
+      <ion-select [disabled]='!showStartDate' placeholder='Select Date' name='eventDate' [(ngModel)]='event.startDate'
+        (ionChange)='getEventDate($event)'>
+        <ion-select-option *ngFor='let date of dates' [value]='date'>{{date}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Start Time<span style="color:crimson;">*</span></ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Time</ion-label>
+      <ion-select [disabled]='!showStartTime' placeholder='Select Time' name='eventTime' [(ngModel)]='event.startTime'>
+        <ion-select-option *ngFor='let time of times | keyvalue' [value]='time.key'>{{time.key}}
+          No. Std {{time.value}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Event Description</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-textarea placeholder='Event Description' name='eventDescription' [(ngModel)]='event.eventDescription'></ion-textarea>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Event Registered</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Event Registered</ion-label>
+      <ion-checkbox color='danger' name='eventRegistered' [(ngModel)]='event.eventRegistered' [checked]='checkedItem'></ion-checkbox>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Select Collage</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Collage</ion-label>
+      <ion-select placeholder='Select Collage' name='collage' [(ngModel)]='event.collage'>
+        <ion-select-option [value]='event.collage'>{{event.collage}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Select Department</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Department</ion-label>
+      <ion-select placeholder='Select Department' name='department' [(ngModel)]='event.department'>
+        <ion-select-option [value]='event.department'>{{event.department}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Create From</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Select Create From</ion-label>
+      <ion-select placeholder='Select createFrom' name='createFrom' [(ngModel)]='event.createFrom'>
+        <ion-select-option [value]='event.createFrom'>{{event.createFrom}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand='block' shape='round' fill='outline' [disabled]='!showModifyEventBtn' color='danger' (click)='modifyEventBtn()'>Modify
+      Event</ion-button>
+  </ion-item-group>
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-item-group>
+    <ion-item-divider color='danger'>
+      <ion-label>Student ID</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-input type='number' name='studentId' (ionInput)='getStudentId($event)' placeholder='112940'></ion-input>
+      <ion-buttons>
+        <ion-button color='success' (click)='getStudent()' [disabled]='disabledBtn'>Info</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group *ngIf='showInfo'>
+    <ion-item-divider color='light'>
+      <ion-label>Student Name</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{student.name}}</div>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Student ID</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{student.studentId}}</div>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Collage</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{student.collage}}</div>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Department</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{student.department}}</div>
+    </ion-item>
+
+    <ion-item-divider color='light'>
+      <ion-label>Admin</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-button *ngIf='!admin' color='success' (click)='createAdmin()'>Add Admin</ion-button>
+      <ion-button *ngIf='admin' color='danger' (click)='removeAdmin()'>Remove Admin</ion-button>
+    </ion-item>
+  </ion-item-group>
+
+</ion-content>

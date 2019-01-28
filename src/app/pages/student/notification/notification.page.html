@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor='let notification of notifications' (click)='goToNotification(notification._id)'>
+      <ion-label>Notification</ion-label>
+    </ion-item>
+  </ion-list>
+  <div *ngIf='loadNotification'>
+    <p>No data found!</p>
+  </div>
+</ion-content>

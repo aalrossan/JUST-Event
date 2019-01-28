@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Logfile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list *ngIf='showLogfile' lines='full'>
+    <ion-item *ngFor='let logfile of logfiles'>
+      <div>
+        <h5>{{logfile.name}}</h5>
+        <p>{{logfile.event}}</p>
+        <p>{{logfile.date}}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

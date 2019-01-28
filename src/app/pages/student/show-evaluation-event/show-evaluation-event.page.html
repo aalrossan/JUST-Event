@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Show Evaluation Event
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center padding *ngIf='loadEvaluations'>
+  <ion-list *ngFor='let evaluation of evaluations let i = index' (ionFocus)='mcqAnswer(i, $event)'>
+    <ion-radio-group>
+      <ion-list-header text-wrap>
+        <h1>{{evaluation.question}}</h1>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label text-wrap>{{evaluation.answer[0]}}</ion-label>
+        <ion-radio [value]='evaluation.answer[0]'></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap>{{evaluation.answer[1]}}</ion-label>
+        <ion-radio [value]='evaluation.answer[1]'></ion-radio>
+      </ion-item>
+
+      <ion-item *ngIf='evaluation.answer[2]'>
+        <ion-label text-wrap>{{evaluation.answer[2]}}</ion-label>
+        <ion-radio [value]='evaluation.answer[2]'></ion-radio>
+      </ion-item>
+
+      <ion-item *ngIf='evaluation.answer[3]'>
+        <ion-label text-wrap>{{evaluation.answer[3]}}</ion-label>
+        <ion-radio [value]='evaluation.answer[3]'></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-button color='danger' expand='block' shape='round' fill='outline' (click)='sendEvaluation()'>Send Evaluation</ion-button>
+</ion-content>

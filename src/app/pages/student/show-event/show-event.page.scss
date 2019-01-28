@@ -1,0 +1,23 @@
+ion-card {
+    position: relative;
+}
+
+ion-card-header {
+    position: absolute;
+    top: 35%;
+}
+
+ion-card-title {
+    color: #fff;
+}
+
+ion-card-content {
+    position: absolute;
+    top: 65%;
+    color: #fff;
+    font-size: 15px;
+}
+
+.emptyEvent {
+    margin-top: 70%;
+}

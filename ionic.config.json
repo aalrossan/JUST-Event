@@ -1,5 +1,7 @@
 {
   "name": "JustEvent",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

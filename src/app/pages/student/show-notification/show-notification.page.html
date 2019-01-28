@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+    <ion-buttons slot='end'>
+      <ion-button slot='icon-only' (click)='removeNotification()' size='large'>
+        <ion-icon name='trash'></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item *ngIf='loadNotification'>
+    {{notificationDescription}}
+  </ion-item>
+</ion-content>

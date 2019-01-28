@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-item-group>
+    <ion-item-divider color='danger'>
+      <ion-label>Admin Name</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{admin.name}}</div>
+    </ion-item>
+
+    <ion-item-divider color='danger'>
+      <ion-label>Admin ID</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>{{admin.adminId}}</ion-label>
+    </ion-item>
+
+    <ion-item-divider color='danger'>
+      <ion-label>Collage</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{admin.collage}}</div>
+    </ion-item>
+
+    <ion-item-divider color='danger'>
+      <ion-label>Department</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <div>{{admin.department}}</div>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

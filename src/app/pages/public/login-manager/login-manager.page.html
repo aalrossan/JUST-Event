@@ -1,0 +1,15 @@
+<ion-content text-center>
+  <div class='content'>
+    <img src='../../../../assets/img/logo.png'>
+    <ion-item>
+      <ion-input placeholder='Manager ID' type='text' name='managerId' [(ngModel)]='login.managerId'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder='Password' type='password' name='password' [(ngModel)]='login.password'></ion-input>
+    </ion-item>
+    <ion-button color='light' expand='block' shape='round' fill='outline' (click)='loginManagerBtn()'>Login</ion-button>
+    <ion-buttons slot='start' text-center>
+      <ion-button (click)='goToLoginStudent()'>Login As Student/Admin</ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>

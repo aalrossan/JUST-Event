@@ -1,0 +1,38 @@
+ion-card {
+    position: relative;
+}
+
+ion-card-header {
+    position: absolute;
+    top: 30%;
+}
+
+ion-card-title {
+    color: #fff;
+}
+
+ion-card-content {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 15px;
+}
+
+ion-row {
+    text-align: center;
+    font-size: 25px;
+}
+
+ion-row ion-icon {
+    margin-left: 35%;
+    color: black;
+}
+
+ion-col {
+    text-align: center;
+    font-size: 10px;
+}
+
+.emptyEvent {
+    margin-top: 60%;
+}
